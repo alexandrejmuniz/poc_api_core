@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "poc.api.core", "poc.api.core\poc.api.core.csproj", "{11042989-D802-41D3-BA27-8F0A8E52D81E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11042989-D802-41D3-BA27-8F0A8E52D81E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11042989-D802-41D3-BA27-8F0A8E52D81E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11042989-D802-41D3-BA27-8F0A8E52D81E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11042989-D802-41D3-BA27-8F0A8E52D81E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7CBD877C-5179-4B20-80E0-E2225DA56002}
+	EndGlobalSection
+EndGlobal

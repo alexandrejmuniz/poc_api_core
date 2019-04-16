@@ -3,13 +3,11 @@ using Xunit;
 
 namespace TestLayer
 {
-    public class UnitTest1
+    public class MainTest
     {
         [Fact]
-        public void Test1()
+        public void Index()
         {
-            
-
         }
     }
 }

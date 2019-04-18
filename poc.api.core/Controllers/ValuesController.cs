@@ -28,7 +28,6 @@ namespace WebInterface.Controllers
         [HttpPost]
         public void Post([FromBody] string value)
         {
-            string s = "";
         }
 
         // PUT api/values/5

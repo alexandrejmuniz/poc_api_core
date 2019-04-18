@@ -8,6 +8,8 @@ namespace DomainLayer
     {
         public int id { get; set; }
 
+        public string name { get; set; }
+
         public User user { get; set; }
 
         public DateTime timeCreation { get; set; }

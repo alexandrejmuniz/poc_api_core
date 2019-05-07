@@ -16,54 +16,31 @@ namespace WebInterface.Controllers
         [ProducesResponseType(typeof(Product), StatusCodes.Status400BadRequest)]
         public ActionResult Get(int page_size, int page)
         {
-            try
-            {
-                return Ok(new ProductSVC().List(page_size, page));
-            }
-            catch (Exception)
-            {
-                return BadRequest();
-            }
+            return Ok(new ProductSVC().List(page_size, page));
         }
 
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(Product), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Product), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(Product), StatusCodes.Status404NotFound)]
-
         public ActionResult<string> Get(int id)
         {
-            try
-            {
-                var Product = new ProductSVC().Fetch(id);
+            var product = new ProductSVC().Fetch(id);
 
-                if (Product==null)
-                {
-                    return NotFound();
-                }
-                return Ok(Product);
-            }
-            catch (Exception)
+            if (product == null)
             {
-                return BadRequest();
+                return NotFound();
             }
+
+            return Ok(product);
         }
 
         [HttpPost]
         [ProducesResponseType(typeof(Product), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(Product), StatusCodes.Status400BadRequest)]
-        public async Task< ActionResult<int>> Post([FromBody] string name)
+        public async Task<ActionResult<int>> Post([FromBody] string name)
         {
-            try
-            {
-                int Product_id = await new ProductSVC().Create(new Product() { name = name});
-                return Ok(Product_id);
-            }
-            catch (Exception)
-            {
-                return BadRequest();
-            }
+            return Ok(await new ProductSVC().Create(new Product { name = name }));
         }
-
     }
 }

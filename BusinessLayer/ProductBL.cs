@@ -11,16 +11,14 @@ namespace BusinessLayer
         {
             List<Product> lstProducts = new List<Product>();
 
-            lstProducts.Add(new Product() { id = 1, name = "Product 1" });
-            lstProducts.Add(new Product() { id = 2, name = "Product 2" });
+            lstProducts.Add(new Product() { Id = 1, Name = "Product 1" });
+            lstProducts.Add(new Product() { Id = 2, Name = "Product 2" });
 
             return lstProducts;
-
         }
 
         public Product Fetch(int Product_id)
         {
-
             if (Product_id > 1)
             {
                 /**
@@ -28,7 +26,7 @@ namespace BusinessLayer
                  */
                 return null;
             }
-            return new Product() { id = Product_id, name = "Product " };
+            return new Product() { Id = Product_id, Name = "Product " };
         }
 
         /// <summary>
@@ -38,33 +36,24 @@ namespace BusinessLayer
         /// <returns>Product code entered</returns>
         public async Task<int> Create(Product Product)
         {
-            #region persistence layer or api call for insertion
-
-            #endregion
             await Task.Delay(TimeSpan.FromMilliseconds(5000));
-            /// then 
+            /// then
             /// I return the Product code
             return 1;
         }
 
         public async Task<bool> Delete(Product Product)
         {
-            #region persistence layer or api call for DELETE
-
-            #endregion
             await Task.Delay(TimeSpan.FromMilliseconds(5000));
-            /// then 
+            /// then
             /// I return the status of operation
             return true;
         }
 
         public async Task<bool> Update(Product Product)
         {
-            #region persistence layer or api call for UPDATE
-
-            #endregion
             await Task.Delay(TimeSpan.FromMilliseconds(5000));
-            /// then 
+            /// then
             /// I return the status of operation
             return true;
         }
@@ -73,10 +62,6 @@ namespace BusinessLayer
         {
             try
             {
-                #region Logic for persistence in the data repository
-
-                #endregion
-
                 return true;
             }
             catch (Exception)
@@ -84,7 +69,5 @@ namespace BusinessLayer
                 return false;
             }
         }
-
     }
-
 }

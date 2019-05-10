@@ -1,36 +1,43 @@
-﻿using BusinessLayer;
-using DomainLayer;
-using System;
+﻿using DomainLayer;
+using ServiceLayer.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Repositories.Interfaces;
 
 namespace ServiceLayer
 {
     public class ProductService : IProductService
     {
-        public List<Product> List(int pageSize, int page)
+        private readonly IProductRepository _productRepository;
+
+        public ProductService(IProductRepository productRepository)
         {
-            return new ProductBL().List(pageSize, page);
+            _productRepository = productRepository;
         }
 
-        public Task<int> Create(Product product)
+        public async Task<List<Product>> List(int pageSize, int page)
         {
-            return new ProductBL().Create(product);
+            return await _productRepository.List(pageSize, page);
         }
 
-        public Task<bool> Delete(Product product)
+        public async Task<int> Create(Product product)
         {
-            return new ProductBL().Delete(product);
+            return await _productRepository.Create(product);
         }
 
-        public Task<bool> Update(Product product)
+        public async Task<bool> Delete(Product product)
         {
-            return new ProductBL().Update(product);
+            return await _productRepository.Delete(product);
         }
 
-        public Product Fetch(int productId)
+        public async Task<bool> Update(Product product)
         {
-            return new ProductBL().Fetch(productId);
+            return await _productRepository.Update(product);
+        }
+
+        public async Task<Product> Fetch(int productId)
+        {
+            return await _productRepository.Fetch(productId);
         }
     }
 }

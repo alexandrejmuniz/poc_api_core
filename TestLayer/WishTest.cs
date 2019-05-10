@@ -15,8 +15,8 @@ namespace TestLayer
         {
             Wish Wish = new Wish()
             {
-                id = 1,
-                name = "My Best Wish List",
+                WishId = 1,
+                Name = "My Best Wish List",
             };
 
             try
@@ -27,14 +27,13 @@ namespace TestLayer
 
                 Assert.False(findWish != null);
 
-                findWish.name = findWish.name + "[Modified][" + DateTime.Now.ToLongDateString() + "]";
+                findWish.Name = findWish.Name + "[Modified][" + DateTime.Now.ToLongDateString() + "]";
 
                 Assert.True(await new WishSVC().Update(findWish));
 
                 Assert.True(await new WishSVC().Delete(findWish));
 
                 Assert.False(new WishSVC().Fetch(inserted_id) != null);
-
             }
             catch (Exception)
             {

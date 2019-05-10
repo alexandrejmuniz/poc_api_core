@@ -13,10 +13,11 @@ namespace TestLayer
         [Fact]
         public async System.Threading.Tasks.Task MainAsync()
         {
-            User User = new User() {
-                id = 1,
-                name = "Alexandre",
-                email = "alexandrejmuniz@gmail.com"    
+            User User = new User()
+            {
+                UserId = 1,
+                Name = "Alexandre",
+                Email = "alexandrejmuniz@gmail.com"
             };
 
             try
@@ -27,14 +28,13 @@ namespace TestLayer
 
                 Assert.False(findUser != null);
 
-                findUser.name = findUser.name + "[Modified][" + DateTime.Now.ToLongDateString() + "]";
+                findUser.Name = findUser.Name + "[Modified][" + DateTime.Now.ToLongDateString() + "]";
 
                 Assert.True(await new UserSVC().Update(findUser));
 
                 Assert.True(await new UserSVC().Delete(findUser));
 
                 Assert.False(new UserSVC().Fetch(inserted_id) != null);
-
             }
             catch (Exception)
             {

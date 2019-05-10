@@ -11,8 +11,14 @@ namespace WebInterface.Mapping
         {
             CreateMap<ProductRequest, Product>();
 
+            CreateMap<ProductUpdateRequest, Product>()
+                .ForMember(po => po.ProductId, opt => opt.MapFrom(a => a.Code));
+
+            CreateMap<ProductDeleteRequest, Product>()
+                .ForMember(po => po.ProductId, opt => opt.MapFrom(a => a.Code));
+
             CreateMap<Product, ProductResponse>()
-                .ForMember(po => po.Code, opt => opt.MapFrom(a => a.Id));
+                .ForMember(po => po.Code, opt => opt.MapFrom(a => a.ProductId));
         }
     }
 }

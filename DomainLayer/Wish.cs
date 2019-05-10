@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DomainLayer
 {
     public class Wish
     {
-        public int id { get; set; }
+        public int WishId { get; set; }
 
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public User user { get; set; }
+        public User User { get; set; }
 
-        public DateTime timeCreation { get; set; }
+        public DateTime TimeCreation { get; set; }
 
-        public List<Product> products { get; set; }
+        public ICollection<ProductWish> ProductWish { get; set; } = new List<ProductWish>();
     }
 }

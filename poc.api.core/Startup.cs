@@ -1,12 +1,19 @@
 ﻿using AutoMapper;
+using DomainLayer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Repositories;
+using Repositories.Context;
+using Repositories.Interfaces;
 using ServiceLayer;
+using ServiceLayer.Interfaces;
 using Swashbuckle.AspNetCore.Swagger;
+using WebInterface.Middleware;
 
 namespace WebInterface
 {
@@ -26,9 +33,14 @@ namespace WebInterface
                 options.SwaggerDoc("v1", new Info { Title = "SwaggerDoc API", Version = "v1" });
             });
 
+            services.AddDbContext<InMemoryDbContext>(options =>
+                options.UseInMemoryDatabase(databaseName: "databaseInMemory")
+                    .EnableSensitiveDataLogging());
+
             services.AddAutoMapper();
 
             services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IProductRepository, ProductRepository>();
 
             services.AddApiVersioning(o =>
             {
@@ -44,6 +56,8 @@ namespace WebInterface
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseUnhandledExceptionMiddleware();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

@@ -2,18 +2,18 @@
 using System.Threading.Tasks;
 using DomainLayer;
 
-namespace ServiceLayer
+namespace Repositories.Interfaces
 {
-    public interface IProductService
+    public interface IProductRepository
     {
-        List<Product> List(int pageSize, int page);
+        Task<List<Product>> List(int pageSize, int pageCount);
+
+        Task<Product> Fetch(int productId);
 
         Task<int> Create(Product product);
 
         Task<bool> Delete(Product product);
 
         Task<bool> Update(Product product);
-
-        Product Fetch(int productId);
     }
 }

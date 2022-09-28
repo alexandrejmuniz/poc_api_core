@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace DomainLayer
 {
     public class User
     {
-        public int id { get; set; }
+        public int UserId { get; set; }
 
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public string email { get; set; }
+        public string Email { get; set; }
 
+        public ICollection<Wish> Wishes { get; set; } = new List<Wish>();
     }
 }
